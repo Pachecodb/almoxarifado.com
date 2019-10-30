@@ -1,0 +1,165 @@
+﻿<!Doctype html>
+<html>
+
+<head>
+	<!-- BIBLIOTECA DE FUNÇÕES DEFINIDAS EM JAVASCRIPT -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
+
+	<!-- Biblioteca para utilização de ícones -->
+	<!-- https://fontawesome.com/v4.7.0/icons/  Lista de ícones -->
+	<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- CHAMADA DOS ESTILOS CSS bootstrap e estilo próprio -->
+	<link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/estilo.css">
+
+	<!-- Mascara para cpf, cep, monetário -->
+	<script src="js/maskedinput.min.js"></script>
+	<script type="text/javascript" src="js/priceformat.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+
+			$('.mascaraReal').priceFormat({
+				prefix: '',
+				centsSeparator: ',',
+				thousandsSeparator: '.'
+			});
+
+			$('.inteiro').priceFormat({
+				centsLimit: 0,
+				prefix: '',
+				centsSeparator: '',
+				thousandsSeparator: ''
+			});
+
+		});
+
+		$(document).ready(function () {
+
+
+		});
+
+	</script>
+
+	<!-- DEFINIÇÃO DO ÍCONE E TÍTULO DA ABA DO NAVEGADOR -->
+	<link rel="shortcut icon" type="image/png" href="imagens/ferramentas.png" />
+	<title>Almoxarifado</title>
+
+	<!-- Identificação do autor da página, pode ser a empresa também -->
+	<meta name="author" content="Jefferson Pacheco">
+
+	<!-- Uma breve descrição do seu site para os buscadores encontrarem seu site -->
+	<meta name="description" content="Sistema de Almoxarifado">
+
+	<!-- Palavras chave que definem o seu sistema. É comum utilizar até 5 palavras -->
+	<meta name="keywords" content="sites, web,estoque,,gestão, almoxarifado">
+
+	<script>
+
+		function carregar(nomeArquivo) {
+			$("#conteudo").load(nomeArquivo);
+		}
+		function salvar() {
+			//Resgatar os campos
+			var campoUsuario = document.getElementById("usuario");
+			var campoSenha = document.getElementById("senha");
+
+			var usuario = campoUsuario.value;
+			//var nome = $("#nome").val();
+			var senha = campoSenha.value;
+			//var idade = parseInt( $("#idade").val() );
+
+			if (usuario == "" || usuario.length <= 4) {
+				alertaErro("Usuario incorreto! minimo 5 caracteres");
+			} else if (senha == "" || senha.length <= 4) {
+				alertaErro("Senha incorreta! minimo 5 caracteres");
+			} else if (senha !== "admin" || usuario !=="admin") {
+				alertaErro("Usuario ou Senha incorretos!!");
+				return;
+			} else if (usuario == "admin" & senha == "admin") {
+				//alertaSucesso("Login efetuado com sucesso");
+				window.location = "index.html";
+			}
+
+		}
+
+		function limpar() {
+			//Resgate dos campos a serem limpos.
+			var campoUsuario = document.getElementById("usuario");
+			var campoSenha = document.getElementById("senha");
+
+			//Limpar os campos.
+			campoUsuario.value = "";
+			campoSenha.value = "";
+			campoRes.innerHTML = "";
+		}
+
+		function alertaErro(msg) {
+			$("#alerta_erro .texto").html(msg);
+			$("#alerta_erro").slideDown(400).delay(2000).slideUp(400);
+		}
+
+		function alertaSucesso(msg) {
+			$("#alerta_sucesso .texto").html(msg);
+			$("#alerta_sucesso").slideDown(400).delay(2000).slideUp(400);
+		}
+
+		function alertaAviso(msg) {
+			$("#alerta_aviso .texto").html(msg);
+			$("#alerta_aviso").slideDown(400);
+		}
+	</script>
+</head>
+
+<body onload="">
+	<h3>Xperience</h3>
+
+	<h3 style="text-align: right;">Fone: 32231223</h3>
+
+	<div class="content-wrapper">
+		<div class="container-fluid" id="tudo">
+			<!-- FIM DEFINIÇÃO DO MENU DE NAVEGAÇÃO -->
+
+			<div id="conteudo">
+
+				<!-- Aqui serão carregadas páginas de forma dinâmica pelo javascript -->
+				<div class="formulario-login">
+					<h4 class="titulo"> Acesso restrito</h4>
+					<div class="form-group">
+						<label>Usuário: </label>
+						<input type="text" id="usuario" class="form-control" placeholder="Digite o nome de usuario" autofocus>
+					</div>
+					<div class="form-group">
+						<label>Senha: </label>
+						<input type="password" id="senha" class="form-control" placeholder="Digite sua senha">
+					</div>
+					<button class="btn btn-outline-success" onclick="salvar()">Entrar</button>
+					<button class="btn btn-outline-warning" onclick="limpar ()">Limpar</button>
+					<a class="nav-item nav-link " href="#EsqueciSenha" onclick="carregar('esqueci_senha.html')">Esqueci a Senha</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="alerta_sucesso" style="position: fixed; top:0px; left:0px; width: 100%; display:none;" class="alert alert-success">
+		<span class="texto">Alerta de sucesso!</span>
+	</div>
+
+
+	<div id="alerta_erro" style="position: fixed; top:0px; left:0px; width:100%; display: none;" class="alert alert-danger">
+		<span class="texto">Alerta de erro!</span>
+	</div>
+
+
+	<div id="alerta_aviso" style="position: fixed; top:0px; left:0px; width:100%; display: none;" class="alert alert-warning">
+		<span class="texto">Este alert possui botão de fechar!</span>
+		<button type="button" class="close" data-dismiss="alert">
+			<span>&times;</span>
+		</button>
+	</div>
+
+</body>
+
+</html>

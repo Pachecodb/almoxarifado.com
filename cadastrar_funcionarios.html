@@ -1,0 +1,104 @@
+﻿<script src="js/maskedinput.min.js"></script>
+<script type="text/javascript" src="js/priceformat.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('.mascaraReal').priceFormat({
+			prefix: '',
+			centsSeparator: ',',
+			thousandsSeparator: '.'
+		});
+		$('.inteiro').priceFormat({
+			centsLimit: 0,
+			prefix: '',
+			centsSeparator: '',
+			thousandsSeparator: ''
+		});
+	});
+	$(document).ready(function () {
+		$(".mascaraData").mask("99/99/9999");
+		$(".mascaraCpf").mask("999.999.999-99");
+	});	
+</script>
+<script>
+	function salvar() {
+		var campoNome = document.getElementById("nome");
+		var campoEmail = document.getElementById("email");
+		var campoCPF = document.getElementById("cpf");
+
+		var nome = $("#nome").val();
+		var email = $("#email").val();
+		var cpf = parseInt($("#cpf").val());
+
+
+		if (nome == "" || nome.length <= 3) {
+			alertaErro("Preencha o campo nome! Minimo 3 caracteres");
+		} else if (email == "" || email.length <= 7) {
+			alertaErro("Preencha corretamente o campo E-mail!");
+		} else if (isNaN(cpf) || cpf < 0 || cpf <= 11) {
+			alertaErro("Preencha corretamente o campo CPF");
+		} else {
+			alertaSucesso("Cadastrado com sucesso");
+		}
+	}
+	function alertaErro(msg) {
+		$("#alerta_erro .texto").html(msg);
+		$("#alerta_erro").slideDown(400).delay(2000).slideUp(400);
+	}
+	function alertaSucesso(msg) {
+		$("#alerta_sucesso .texto").html(msg);
+		$("#alerta_sucesso").slideDown(400).delay(2000).slideUp(400);
+	}
+	function alertaAviso(msg) {
+		$("#alerta_aviso .texto").html(msg);
+		$("#alerta_aviso").slideDown(400);
+	}
+</script>
+
+<body onload="">
+	<div class="content-wrapper">
+		<div class="container-fluid" id="tudo">
+			<!-- INICIO DEFINIÇÃO DO MENU DE NAVEGAÇÃO -->
+			<!-- FIM DEFINIÇÃO DO MENU DE NAVEGAÇÃO -->
+
+			<div id="conteudo">
+				<!-- Aqui serão carregadas páginas de forma dinâmica pelo javascript -->
+				<div class="formulario">
+
+					<h4>Cadastro de funcionarios</h4>
+
+					<div class="form-group">
+						<label>Nome </label>
+						<input type="text" id="nome" class="form-control" placeholder="Digite nome do funcionário" autofocus>
+					</div>
+
+					<div class="form-group">
+						<label>E-mail </label>
+						<input type="text" id="email" placeholder="Digite o e-mail" class="form-control" autofocus>
+					</div>
+					<div class="form-group">
+						<label>CPF</label>
+						<input type="text" id="cpf" placeholder="Digite o CPF" class="form-control mascaraCpf" autofocus>
+					</div>
+					<button class="btn btn-success" onclick="salvar ()">Cadastrar</button>
+					<a href="index.html" class="btn btn-default">Cancelar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- DEFINIÇÃO DAS CAIXAS DE MENSAGEM -->
+	<div id="alerta_sucesso" style="position: fixed; top:0px; left:0px; width: 100%; display:none;" class="alert alert-success">
+		<span class="texto">Alerta de sucesso!</span>
+	</div>
+
+	<div id="alerta_erro" style="position: fixed; top:0px; left:0px; width:100%; display: none;" class="alert alert-danger">
+		<span class="texto">Alerta de erro!</span>
+	</div>
+
+	<div id="alerta_aviso" style="position: fixed; top:0px; left:0px; width:100%; display: none;" class="alert alert-warning">
+		<span class="texto">Este alert possui botão de fechar!</span>
+		<button type="button" class="close" data-dismiss="alert">
+			<span>&times;</span>
+		</button>
+	</div>
+</body>

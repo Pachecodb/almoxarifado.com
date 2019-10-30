@@ -1,0 +1,116 @@
+<link rel="stylesheet" href="css/estilo.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+ crossorigin="anonymous">
+<div class="row">
+	<div class="col-md-6">
+		<a href="#CadastrarProdutos" onclick="carregar('cadastrar_produtos.html')" class="btn btn-success">Inserir novo produto</a>
+	</div>
+	<div class="col-md-6" style="text-align: right;">
+		<input type="text" style="width: 50%; display: inline-block;" id="pesquisa" class="form-control" placeholder="Digite o nome do produto"
+		 autofocus>
+		<button class="btn btn-default">Pesquisar</button>
+	</div>
+</div>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Imagem</th>
+			<th>Nome</th>
+			<th>Status</th>
+			<th>Quantidade</th>
+			<th>Data de retorno</th>
+			<th align="center">Reservas</th>
+			<th align="center">Editar</th>
+			<th align="center">Excluir</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>
+				<img src="imagens/martelo.png" width="40px">
+			</td>
+			<td>
+				Martelo
+				<br>
+			</td>
+			<td> Indisponivel </td>
+			<td> 1 </td>
+			<td>10/05/2018</td>
+			<td>
+				<a class="btn btn-default" href="reservar_produtos.html">Reservar</a>
+			</td>
+			<td>
+				<a class="btn btn-warning" href="#EditarProdutos" onclick="carregar('editar_produtos.html')">Editar</a>
+			</td>
+			<td>
+				<a class="btn btn-danger">Excluir</a>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<img src="imagens/lampada.png" width="40px">
+			</td>
+			<td>
+				Lampada
+				<br>
+			</td>
+			<td> Disponivel </td>
+			<td> 1 </td>
+			<td></td>
+			<td>
+				<a class="btn btn-default" href="reservar_produtos.html">Reservar</a>
+			</td>
+			<td>
+				<a class="btn btn-warning" href="#EditarProdutos" onclick="carregar('editar_produtos.html')">Editar</a>
+			</td>
+			<td>
+				<a class="btn btn-danger">Excluir</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="imagens/apa.png" width="40px">
+			</td>
+			<td>
+				A pá
+				<br>
+			</td>
+			<td>Indisponivel </td>
+			<td> 1 </td>
+			<td>10/05/2018</td>
+			<td>
+				<a class="btn btn-default" href="reservar_produtos.html">Reservar</a>
+			</td>
+			<td>
+				<a class="btn btn-warning" href="#EditarProdutos" onclick="carregar('editar_produtos.html')">Editar</a>
+			</td>
+			<td>
+				<a class="btn btn-danger">Excluir</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="imagens/serrote.png" width="40px">
+			</td>
+			<td>
+				Serrote
+				<br>
+			</td>
+			<td>Disponivel</td>
+			<td> 1 </td>
+			<td></td>
+			<td>
+				<a class="btn btn-default" href="reservar_produtos.html">Reservar</a>
+			</td>
+			<td>
+				<a class="btn btn-warning" href="#EditarProdutos" onclick="carregar('editar_produtos.html')">Editar</a>
+			</td>
+			<td>
+				<a class="btn btn-danger">Excluir</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<a href="login.html" style="text-align: right" class="btn btn-default">Sair</a>

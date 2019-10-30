@@ -1,0 +1,72 @@
+﻿<!Doctype html>
+<html>
+
+<head>
+	<!-- BIBLIOTECA DE FUNÇÕES DEFINIDAS EM JAVASCRIPT -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
+
+	<!-- Biblioteca para utilização de ícones -->
+	<!-- https://fontawesome.com/v4.7.0/icons/  Lista de ícones -->
+	<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- CHAMADA DOS ESTILOS CSS bootstrap e estilo próprio -->
+	<link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<!-- DEFINIÇÃO DO ÍCONE E TÍTULO DA ABA DO NAVEGADOR -->
+	<link rel="shortcut icon" type="image/png" href="imagens/ferramentas.png" />
+	<title>Almoxarifado</title>
+
+	<!-- Identificação do autor da página, pode ser a empresa também -->
+	<meta name="author" content="Jefferson Pacheco">
+
+	<!-- Uma breve descrição do seu site para os buscadores encontrarem seu site -->
+	<meta name="description" content="Sistema de Almoxarifado">
+
+	<!-- Palavras chave que definem o seu sistema. É comum utilizar até 5 palavras -->
+	<meta name="keywords" content="sites, web, meta tag, código, html">
+
+	<script>
+		//Esta função será responsável por inserir os conteúdos dos 
+		//demais arquivos dentro da div conteudo
+		//Exemplo de uso: carregar('inicio.html') e o arquivo inicio.html 
+		//será inserido dentro da div conteúdo
+		//Veja no evento onload do body
+
+		function carregar(nomeArquivo) {
+			$("#conteudo").load(nomeArquivo);
+		}
+	</script>
+</head>
+
+<body onload="carregar('inicio.html')">
+	<div class="content-wrapper">
+		<div class="container-fluid" id="tudo">
+			<!-- INICIO DEFINIÇÃO DO MENU DE NAVEGAÇÃO -->
+			<div id="menu">
+				<nav class="nav nav-pills nav-fill">
+					<a class="nav-item nav-link active" href="#inicio" onclick="carregar('inicio.html')" <i class="fa fa-home">
+						</i> Home</a>
+					<a class="nav-item nav-link " href="#funcionarios" onclick="carregar('funcionarios.html')">Funcionários</a>
+					<a class="nav-item nav-link " href="#controlereservas" onclick="carregar('controle_reservas.html')">Controle de Reservas</a>
+					<a class="nav-item nav-link " href="#suporte" onclick="carregar('suporte.html')">Suporte</a>
+				</nav>
+			</div>
+
+			<!-- FIM DEFINIÇÃO DO MENU DE NAVEGAÇÃO -->
+			<div id="conteudo">
+				<!-- Aqui serão carregadas páginas de forma dinâmica pelo javascript -->
+
+			</div>
+
+			<div id="rodape">
+				Direitos reservados
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

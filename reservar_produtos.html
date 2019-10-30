@@ -1,0 +1,119 @@
+﻿<!-- Mascara para cpf, cep, monetário -->
+<script src="js/maskedinput.min.js"></script>
+<script type="text/javascript" src="js/priceformat.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function () {
+
+		$('.mascaraReal').priceFormat({
+			prefix: '',
+			centsSeparator: ',',
+			thousandsSeparator: '.'
+		});
+
+		$('.inteiro').priceFormat({
+			centsLimit: 0,
+			prefix: '',
+			centsSeparator: '',
+			thousandsSeparator: ''
+		});
+
+	});
+
+	$(document).ready(function () {
+		$(".mascaraData").mask("99/99/9999");
+	});
+
+</script>
+<script>
+	function salvar() {
+		//Resgatar os campos
+		var campoNomeProduto = document.getElementById("nome_produto");
+		var campoNome = document.getElementById("nome");
+		var campoQuantidade = document.getElementById("quantidade");
+		var campoDataDevolucao = document.getElementById("data_devolucao");
+
+
+
+		var nomeProtudo = campoNomeProduto.value;
+		var nome = campoNome.value;
+		//var nome = $("#nome").val();
+		var quantidade = parseInt(campoQuantidade.value);
+		//var idade = parseInt( $("#idade").val() );
+		var dataDevolucao = parseInt(campoDataDevolucao.value);
+
+		if (nomeProtudo == "" || nomeProtudo.length <= 3) {
+			alertaErro("Preencha o campo nome do Produto! Minimo 3 caracteres");
+		} else if (isNaN(quantidade) || quantidade < 0 || quantidade > 99) {
+			alertaErro("Preencha corretamente o campo quantidade!");
+		} else if (nome == "" || nome.length <= 3) {
+			alertaErro("Preencha o campo nome funcioanrio! Minimo 3 caracteres");
+		} else if (isNaN(dataDevolucao) || dataDevolucao < 0 || dataDevolucao > 8) {
+			alert("teste");
+			alertaErro("Preencha corretamente o campo data de devolução!");
+		} else {
+			alertaSucesso("Cadastrado com sucesso");
+		}
+
+	}
+
+	function alertaErro(msg) {
+		$("#alerta_erro .texto").html(msg);
+		$("#alerta_erro").slideDown(400).delay(2000).slideUp(400);
+	}
+
+	function alertaSucesso(msg) {
+		$("#alerta_sucesso .texto").html(msg);
+		$("#alerta_sucesso").slideDown(400).delay(2000).slideUp(400);
+	}
+
+	function alertaAviso(msg) {
+		$("#alerta_aviso .texto").html(msg);
+		$("#alerta_aviso").slideDown(400);
+	}
+</script>
+
+
+<body onload="">
+	<div class="content-wrapper">
+		<div class="container-fluid" id="tudo">
+
+			<div id="conteudo">
+				<!-- Aqui serão carregadas páginas de forma dinâmica pelo javascript -->
+				<div class="formulario">
+					<h4>Reservar item</h4>
+
+					<label>Nome Produto </label>
+					<input type="text" id="nome_produto" class="form-control" placeholder="Digite o nome do produto" autofocus>
+
+					<label>Quantidade </label>
+					<input type="text" id="quantidade" style="width: 10%;" class="form-control" autofocus>
+
+					<label>Nome do funcioanrio</label>
+					<input type="text" id="nome" class="form-control" placeholder="Digite o nome do funcionario" autofocus>
+
+					<label>Data de devolução </label>
+					<input type="text" id="data_devolucao" class="form-control mascaraData" placeholder="Digite a data de devolução" autofocus>
+
+					<button class="btn btn-success" onclick="salvar()">Enviar</button>
+					<a href="index.html" class="btn btn-default">Cancelar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- DEFINIÇÃO DAS CAIXAS DE MENSAGEM -->
+	<div id="alerta_sucesso" style="position: fixed; top:0px; left:0px; width: 100%; display:none;" class="alert alert-success">
+		<span class="texto">Alerta de sucesso!</span>
+	</div>
+
+	<div id="alerta_erro" style="position: fixed; top:0px; left:0px; width:100%; display: none;" class="alert alert-danger">
+		<span class="texto">Alerta de erro!</span>
+	</div>
+
+	<div id="alerta_aviso" style="position: fixed; top:0px; left:0px; width:100%; display: none;" class="alert alert-warning">
+		<span class="texto">Este alert possui botão de fechar!</span>
+		<button type="button" class="close" data-dismiss="alert">
+			<span>&times;</span>
+		</button>
+	</div>
