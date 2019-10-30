@@ -1,0 +1,22 @@
+.formulario{
+	width: 60%;
+	border: 1px solid #CCC;
+	border-radius: 5px;
+	background-color: #F9F9F9;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding: 25px;
+}
+
+#tudo{
+	width: 90%;
+	margin-top: 2%;
+}
+
+body{
+	background-color: #F0F0F0;
+}
+
+#rodape{
+	background-color: #990000;
+}
